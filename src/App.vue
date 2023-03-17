@@ -1,12 +1,23 @@
 <template>
   <div>
-    <h1>Hello World!</h1>
+    <div class="container">
+      <Navbar />
+
+    </div>
+   
   </div>
+  <RouterView/>
 </template>
 <script>
+import { Navbar } from "@/components"
+import { RouterView } from "vue-router";
 export default {
-  name: 'App'
+
+  name: 'App',
+
+  components: {
+    Navbar,
+  }
 }
 </script>
-<style>
-</style>
+<style></style>
