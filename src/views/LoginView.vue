@@ -1,14 +1,15 @@
 <template>
-  <div class="container">
-    <h1>
-      Login  
-    </h1>
+  <div class="container text-center">
+    <Login/>
 
   </div>
 </template>
 <script>
+import {Login} from "@/components"
 export default {
-    
+    components:{
+      Login,
+    }
 }
 </script>
 <style>

@@ -1,14 +1,15 @@
 <template>
-    <div class="container">
-        <h1>
-            Register
-        </h1>
+    <div class="container text-center">
+       <Register/>
 
     </div>
 </template>
 <script>
+import {Register} from "@/components" 
 export default {
-    
+    components: {
+        Register,
+    }
 }
 </script>
 <style >
