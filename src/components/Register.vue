@@ -26,7 +26,12 @@ computed:{
 methods:{
     submitHandler(e){
         e.preventDefault();
-        this.$store.dispatch('register')
+        const data = {
+            username: 'jaasdsaha',
+            password: 'jahasda@2002',
+            email:'kholikasdulov@gmail.com'
+        }
+        this.$store.dispatch('register', data )
     }
 }
 }
