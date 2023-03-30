@@ -1,6 +1,6 @@
 <template >
     <div class="d-flex flex-column flex-md-row align-items-center py-3 mb-4 border-bottom">
-        <a href="/" class="d-flex align-items-center text-dark text-decoration-none" @click="$router.push('/')">
+        <a href="/" class="d-flex align-items-center text-dark text-decoration-none" @click="$router.push('home')">
             
            <span>Jaha_dev</span> 
         </a>

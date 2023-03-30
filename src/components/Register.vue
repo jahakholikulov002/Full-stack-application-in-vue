@@ -4,13 +4,13 @@
             <form>
                 <span>Jaha_dev</span>
                 <h1 class="h3 mb-3 mt-3 fw-normal">Register</h1>
-                <Input :label="'Name'" :type="'text'" />
-                <Input :label="'Email address'" :type="'email'"/>
-                <Input :label="'Password'" :type="'password'" />
-               
-             
+                <Input :label="'Name'" :type="'text'" v-model="username" />
+                <Input :label="'Email address'" :type="'email'" v-model="email" />
+                <Input :label="'Password'" :type="'password'" v-model="password" />
 
-                
+
+
+
                 <Button type="submit" :disabled="isLoading" @click="submitHandler">Register</Button>
             </form>
         </main>
@@ -18,22 +18,34 @@
 </template>
 <script>
 export default {
-computed:{
-  isLoading(){
-    return this.$store.state.auth.isLoading
-  }  
-},
-methods:{
-    submitHandler(e){
-        e.preventDefault();
-        const data = {
-            username: 'jaasdsaha',
-            password: 'jahasda@2002',
-            email:'kholikasdulov@gmail.com'
+    data() {
+        return {
+            email: '',
+            username: '',
+            password: ''
         }
-        this.$store.dispatch('register', data )
+    },
+    computed: {
+        isLoading() {
+            return this.$store.state.auth.isLoading
+        }
+    },
+    methods: {
+        submitHandler(e) {
+            e.preventDefault();
+            const data = {
+                username: this.username,
+                email: this.email,
+                password: this.password,
+            }
+            this.$store.dispatch('register', data)
+                .then(user => {
+                    console.log("user", user)
+                    this.$router.push('home')
+                })
+                .catch((err) => console.log("Error", err))
+        }
     }
-}
 }
 </script>
 <style  scoped>
