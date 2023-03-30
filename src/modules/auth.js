@@ -1,6 +1,7 @@
 /** @format */
 
 import AuthService from '@/service/auth';
+import {setItem} from '@/helpers/persistaneStorage'
 const state = {
 	isLoading: false,
 	user: null,
@@ -28,6 +29,7 @@ const actions = {
 			AuthService.register(user)
 				.then((response) => {
 					context.commit('registerSuccess', response.data.user);
+					setItem('token', response.data.user.token);
 					resolve(response.data.user);
 				})
 				.catch((error) => {
