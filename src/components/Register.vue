@@ -4,7 +4,7 @@
             <form>
                 <span>Jaha_dev</span>
                 <h1 class="h3 mb-3 mt-3 fw-normal">Register</h1>
-                <ValidationError v-if="validationErrors" :validationErrors="validationErrors"/>
+                <ValidationError v-if="validationErrors" :validationErrors="validationErrors" />
                 <Input :label="'Name'" :type="'text'" v-model="username" />
                 <Input :label="'Email address'" :type="'email'" v-model="email" />
                 <Input :label="'Password'" :type="'password'" v-model="password" />
@@ -19,6 +19,7 @@
 </template>
 <script>
 import ValidationError from "@/components/ValidationError.vue"
+import { mapState } from 'vuex'
 export default {
     data() {
         return {
@@ -31,12 +32,17 @@ export default {
         ValidationError,
     },
     computed: {
-        isLoading() {
-            return this.$store.state.auth.isLoading
-        },
-        validationErrors(){
-            return this.$store.state.auth.errors
-        }
+        ...mapState({
+            isLoading: state => state.auth.isLoading,
+            validationErrors: state => state.auth.errors
+        })
+
+        // isLoading() {
+        //     return this.$store.state.auth.isLoading
+        // },
+        // validationErrors(){
+        //     return this.$store.state.auth.errors
+        // }
     },
     methods: {
         submitHandler(e) {
